@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Planner</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            
+        </div>
+        <div class="sidebar">
+            <div class="logo">
+                <img class="logo-img" src="./images/logo.png" alt="logo">
+                <h1>toDO</h1>
+            </div>
+            <div class="actions">
+                <ul class="actionlist">
+                   <li class="value" id="inbox">
+                        <i class="fa-solid fa-inbox"></i>
+                       Inbox
+                    </li>  
+                    <li></li> 
+                    <li class="value" id="today">
+                        <i class="fa-solid fa-calendar-day"></i>
+                        Today
+                    </li>
+                    <li></li>
+                    <li class="value" id="upcoming">
+                        <i class="fa-solid fa-calendar"></i>
+                        Upcoming
+                    </li>
+                    <li></li>
+                    <li class="value" id="projects">
+                        <i class="fa-solid fa-bars-progress"></i>
+                        <button id="projectsButton">Projects</button>
+                        <div class="projectNames">
+                            <ul class="projectsList">
+                            </ul>
+                        </div>
+                    </li>
+                    <button id="newProject">New</button>
+                    <li class="value" id="notes">
+                        <i class="fa-solid fa-note-sticky"></i>
+                        Notes
+                    </li>
+                    <li></li>
+                    <li class="value" id="filter">
+                        <i class="fa-solid fa-filter"></i>
+                        <button id="filterButton">Filter</button>
+                    </li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <main class="content">
+            <div class="projectDetails">
+            <div class="contentHeader">
+                <h2 id="selectedAction"></h2>
+                <h3 id="projectDescription"></h3>
+                <h4 id="projectDate"></h3>
+            </div>
+            <div class="projectAction">
+                <button id="projectDelete">Delete Project</button>
+            </div>
+            </div>
+            <div class="lists">
+                <div class="listsGrid">
+                </div>  
+            </div>
+            <div class="addTaskButton">
+                <button id="newTask">Add Task</button>
+            </div>
+            <div class="task">                    
+                <form id="createTask">   
+                    <div class="taskInfo">
+                    <div class="task-details name">
+                        <label for="name">Task</label> 
+                        <input type="text" id="task" required autocomplete="off" maxlength="100" placeholder="Task Description">
+                    </div>
+                    <div class="task-details dueDate">
+                        <label for="taskDate">Due Date</label> 
+                        <input type="date" class="picker" id="taskDate" required autocomplete="off" placeholder="Due Date">
+                    </div>
+                    <div class="task-details priority">Priority:   
+                        <select name="priorityLevel" id="prioritize">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="submission">
+                        <button id="submitTask" type="submit" form="createTask">ADD</button>
+                    </div>
+                </form>
+            </div>
+        </main>   
+        <div class="modal">
+            <div class="modal-container" class="hide">
+                <div class="modalHeader">
+                    <h5 id="projectheader">New Project</h5>
+                </div>
+                <div class="modalBody">
+                <form id="newItem">   
+                <div class="projectInfo">
+                <div class="project-details name">
+                    <label for="name">Project Name</label> 
+                    <input type="text" id="name" autocomplete="off" maxlength="100" placeholder="Birthday Cake">
+                </div>
+                <div class="project-details description">
+                    <label for="description">Description</label> 
+                    <input type="text" id="description" autocomplete="off" maxlength="300" placeholder="brief description">
+                </div>
+                <div class="project-details dueDate">
+                    <label for="date">Due Date</label> 
+                    <input type="date" class="picker" id="date" autocomplete="off" placeholder="Due Date">
+                </div>
+                </div>
+                <p class="error"></p>
+                <div class="submission">
+                    <button id="submit" type="submit" form="newItem">ADD</button>
+                    <button type=button id="cancel">CANCEL</button>
+                </div>
+            </form>
+            </div>
+            </div> 
+    </div>
+    <script src="./main.js"></script>
+    <script src="https://kit.fontawesome.com/30198f524b.js" crossorigin="anonymous"></script>
+</body>
+</html>

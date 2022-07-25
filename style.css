@@ -1,0 +1,563 @@
+@font-face {
+    font-family: poppins-regular;
+    src: url(./font/Poppins/Poppins-Regular.ttf);
+  }
+
+:root {
+    font-family: poppins-regular;
+    font-size: 25px;
+    height: 100vh;
+    --lightblue: rgb(0,168,243);
+    --pink: rgb(210,20,176);
+    --purple: rgb(184,61,186);
+    --lightpink: rgb(226, 84, 200);
+    --green: rgb(119, 233, 151);
+    --gray: rgb(173, 173, 173);
+    --darkgray: rgb(78, 78, 78);
+    --blue: rgb(88, 96, 211);
+    --red: rgb(238, 51, 57);
+    --yellow: rgb(255,242,0);
+    --redpink: #fa3a6d;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'poppins-regular';
+}
+
+.container {
+    display:grid;
+    flex-direction: column;
+    height: 100vh;
+    grid-template-columns: minmax(300px,400px) 4fr;
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas:
+    "sidebar header"
+    "sidebar main"
+    "sidebar main"
+    "sidebar main"
+    "sidebar main"
+    "sidebar main"
+    "sidebar main"
+    "sidebar main"
+    "sidebar main";    
+}
+
+.header {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    background-color:var(--gray);
+    align-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-shadow: 0 5px 5px #bec2c7;
+    z-index: 1;
+}
+
+.search {
+    display: flex;
+    width: min(80%, 800px);
+}
+
+#form {
+    background-color: white;
+    width: 300px;
+    height: 60px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 25rem;
+  }
+
+  input {
+    all: unset;
+    font: 16px system-ui;
+    color: var(--pink);
+    height: 100%;
+    width: 100%;
+    padding: 6px 10px;
+  }
+
+  ::placeholder {
+    color: gray;
+    opacity: 0.7; 
+  }
+
+  #search {
+    all: unset;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+  }
+  
+  svg {
+    color: gray;
+    fill: currentColor;
+    width: 24px;
+    height: 24px;
+    padding: 10px;
+  }
+
+#newProject {
+    background-color: var(--pink);
+    color: white;
+    font-weight: 800;
+    border-radius: 8px;
+    width: 4rem;
+    border: none;
+    text-align: center;
+}
+
+#newTask {
+    background-color: var(--redpink);
+    color: white;
+    font-weight: 800;
+    border-radius: 8px;
+    width: 4rem;
+    border: none;
+    text-align: center;
+    visibility: hidden;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: var(--blue);
+    padding: 2rem 2rem;
+}
+
+.logo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: left;
+}
+
+.logo > img {
+    height: 8vh;
+    width: 8vh;
+}
+
+.logo > h1 {
+    font-size: 3vh;
+    margin: 0;
+    color: white;
+    align-content: center;
+}
+
+.actionlist {
+    list-style-type: none;
+    font-size: 1.5rem;
+    padding: 0px;
+    margin-top: 5vh;
+    display: grid;
+    grid-template-columns: 200px 100px;
+    grid-template-rows: repeat(6, auto);
+    position: relative;
+    gap: 1.5rem;
+}
+
+ul li {
+    align-items: center;
+}
+
+.actions>ul>li>i {
+    width: 1.5vh;
+    height: 1.5vh;
+    color:white;
+    padding-right: 2rem;
+}
+
+.actionlist > li {
+    color: white;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.actionlist>li.value:hover
+{
+    color: var(--redpink);
+    cursor: pointer;    
+}
+
+#filterButton:after,
+#projectsButton:after {
+    content: "\f150";
+    font-family: "fontawesome";
+    font-size: 0.8rem;
+    padding-top: 0.2rem;
+    float: right;
+}
+
+.filterList,
+.projectsList {
+    display: grid;
+    grid-template-rows: 1fr;
+    list-style-type: none;
+    font-size: 1.2rem;
+    padding: 0px;
+}
+
+.filterList > li,
+.projectsList > li {
+    color: white;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.filterList>li:hover,
+.projectsList>li:hover {
+    color: var(--redpink);
+    cursor: pointer;    
+}
+
+#filterButton,
+#projectsButton {
+    font-family: 'poppins-regular';
+    background: none;
+    font-size: 0.8rem;
+    color: white;
+    outline: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    border: none;
+    width: 5rem;
+    text-align: left;
+}
+
+button#newProject {
+    height: 1.5rem;
+}
+
+#filterButton:hover,
+#projectsButton:hover {
+    color: var(--redpink);
+}
+
+#filterButton:hover:after,
+#filterButton.is-open:hover:after
+#projectsButton:hover:after,
+#projectsButton.proj-open:hover:after {
+    color: var(--lightblue);
+}
+
+#filterButton.is-open:after,
+#projectsButton.proj-open:after {
+    content: "\f151";
+    color: var(--purple);
+}
+
+.filterList,
+.projectsList {
+      margin-top: 0.2rem;
+      margin-bottom: 0;
+}
+
+.filterList li,
+.projectsList li {
+    font-size: 0.7rem;
+    padding-bottom: 0.8rem;
+    padding-top: 0.8rem;
+    padding-left: 3rem;
+}
+
+button#newProject:hover,
+button#newTask:hover {
+    cursor: pointer;
+}
+
+.projectDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#projectDelete {
+    visibility: hidden;
+    background-color: var(--darkgray);
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+    border: none;
+}
+
+#projectDelete:hover {
+    background-color: var(--red);
+    color: white;
+}
+/*modal for user to enter project information*/
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 3rem;
+    transform: scale(1);
+    transition: 1s ease-in-out;
+    width: 100vw;
+    height: 100vh; 
+    background-color: rgba(95, 89, 89, 0.6);
+}
+
+.modal-container {
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; 
+    min-width: fit-content;
+    max-width: 30vw;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);    
+    padding: 1rem;
+}
+.projectheader {
+    font-size: 0.5rem;
+}
+
+.modalBody {
+    display: grid;
+    grid-template-columns: 1fr;
+    box-sizing: border-box;
+}
+
+.projectInfo {
+    display: grid;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-details:nth-child(1) {
+    margin-top: 0.5rem;
+}
+
+.project-details label {
+    font-size: 0.6rem;
+}
+
+input[type='text'] {
+    width: 100%;
+    height: 1.5rem;
+    padding: 0.3rem;
+    border-radius: 4px;
+    font-family: 'Poppins-Regular';
+    border: var(--darkgray);
+    border-style: solid;
+    box-sizing: border-box;
+    border-width: 1px;
+}
+
+input[type='text']:focus {
+    border-color: var(--blue);
+    border-style: solid;
+    border-width: 3px;
+    outline: none;
+}
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color:white;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid var(--gray);
+    cursor: pointer;
+  }
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: var(--green);
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid var(--gray);
+    cursor: pointer;
+}
+  
+.submission {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.dueDate {
+    font-family: 'poppins-regular';
+}
+
+input[type='date'] {
+    width: 100%;
+    height: 1.5rem;
+    padding: 0.3rem;
+    border-radius: 4px;
+    font-family: 'Poppins-Regular';
+    font-size: 0.5rem;
+    border: var(--darkgray);
+    border-style: solid;
+    box-sizing: border-box;
+    border-width: 1px;
+}
+
+button[type='submit'],
+#cancel {
+    width: 3rem;
+    height: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    border: none;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+    cursor: pointer;
+    color: var(--blue);
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    font-family: 'Poppins-Regular';
+    margin: 1rem;
+}
+
+button[type='submit']:hover,
+#cancel:hover {
+    background-color: var(--pink);
+    color: white;
+    font-weight: 600;
+}
+
+.modal {
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
+.content {
+    display: grid;
+    grid-area: main;
+    padding: 1rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 8fr;
+    gap: 2rem;
+}
+
+.task {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    visibility: hidden;
+}
+
+.task .show {
+    display: hidden;
+}
+
+#createTask {
+    width: 50%;
+}
+
+#prioritize {
+    font-family: 'Poppins-Regular';
+    font-size: 20px;
+}
+
+.task-details {
+    margin-bottom: 20px;
+}
+
+#submitTask {
+    margin: 0px;
+}
+
+.task1{
+    display: flex;
+    flex-direction: row;
+    border: none;
+}
+
+.listsGrid {
+    display:flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.task1 {
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 100px;
+    font-size: 20px;
+}
+
+.task1:hover {
+    background-color: var(--lightpink);
+    font: white;
+    font-size:22px;
+}
+
+.taskCheck {
+    display:flex;
+    margin-right: 1rem;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 2px;
+    border: 2px solid var(--blue);
+}
+
+.taskCheck:hover {
+    cursor: pointer;
+}
+
+.taskCheck-checked {
+    height: 1rem;
+    width: 1rem;
+    display: block;
+    background: url(./images/checkmark.png), white;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+.task1Left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+}
+
+.task1controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    flex-direction: row;
+    align-self: center;
+    text-align: right;
+    gap: 20px;
+    padding: 20px;
+}
+
+.task1controlsFull {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.deleteTask:hover {
+    color: blue;
+    cursor: pointer;
+    font-weight: 800;
+}
