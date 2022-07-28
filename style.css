@@ -541,7 +541,7 @@ button[type='submit']:hover,
 
 .task1controls {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     flex-direction: row;
     align-self: center;
     text-align: right;
@@ -552,7 +552,7 @@ button[type='submit']:hover,
 
 .task1controlsFull {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(5,1fr);
     flex-direction: row;
     align-self: center;
     align-items: center;
